@@ -9,8 +9,6 @@ keywords:
 draft: false
 ---
 
-<!-- @format -->
-
 <!-- TODO: Add image/video/code examples -->
 
 import Tabs from "@theme/Tabs";
@@ -36,10 +34,17 @@ The optional preceding `!` flag means to store command output regardless of exit
 <Tabs>
 <TabItem value="no-eval+zi" label="No Eval + Zi" default>
 
+```shell {2} showLineNumbers
+zi ice lucid wait id-as'z-shell/pyenv-venv' has'pyenv-virtualenv-init' \
+  atclone'pyenv virtualenv-init - > init.zsh' \
+  atpull'%atclone' src'init.zsh' nocompile'!'
+zi light @z-shell/0
+```
+
 ```shell showLineNumbers
-zi ice as"command" from"gh-r" \
-  atclone"./zoxide init --cmd x zsh > init.zsh" \
-  atpull"%atclone" src"init.zsh" nocompile'!'
+zi ice as'command' from'gh-r' \
+  atclone'./zoxide init --cmd x zsh > init.zsh' \
+  atpull'%atclone' src"init.zsh' nocompile'!'
 zi light ajeetdsouza/zoxide
 ```
 
@@ -54,13 +59,20 @@ zi light trapd00r/LS_COLORS
 <TabItem value="eval+zi" label="Eval + Zi">
 
 ```shell {2} showLineNumbers
-zi ice as"command" from"gh-r" \
-  eval"./zoxide init --cmd x zsh"
+zi ice lucid wait id-as'z-shell/pyenv-venv' \
+  has'pyenv-virtualenv-init' \
+  eval'pyenv virtualenv-init -' nocompile'!'
+zi light @z-shell/0
+```
+
+```shell {2} showLineNumbers
+zi ice as'command' from'gh-r' \
+  eval'./zoxide init --cmd x zsh'
 zi light ajeetdsouza/zoxide
 ```
 
 ```shell {1} showLineNumbers
-zi ice eval"dircolors -b LS_COLORS" \
+zi ice eval'dircolors -b LS_COLORS' \
   atload'zstyle ":completion:*" list-colors ${(s.:.)LS_COLORS}'
 zi light trapd00r/LS_COLORS
 ```
@@ -92,9 +104,7 @@ zi light z-shell/null
 
 :::info Source
 
-- <Link className='github-link' href='https://github.com/z-shell/z-a-eval'>
-    z-shell/z-a-eval
-  </Link>
+<Link className='github-link' href='https://github.com/z-shell/z-a-eval'>z-shell/z-a-eval</Link>
 
 :::
 
